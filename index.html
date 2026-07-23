@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#06080c">
+    <title>Gemini Signal AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-brand">
+            <div class="brand-icon">✦</div>
+            <div>
+                <div class="brand-name">Gemini Signal</div>
+                <div class="brand-sub">AI Trading Terminal</div>
+            </div>
+        </div>
+        <div class="header-badges">
+            <div class="live-badge"><span class="live-dot"></span>Live</div>
+            <div class="win-badge">87% Win</div>
+        </div>
+    </header>
+
+    <!-- Market Tabs -->
+    <div class="market-tabs" id="marketTabs">
+        <button class="market-tab active" data-market="forex">💱 Форекс</button>
+        <button class="market-tab" data-market="commodities">🛢 Сырьё</button>
+        <button class="market-tab" data-market="stocks">📊 Акции</button>
+    </div>
+
+    <!-- Asset Chips -->
+    <div class="asset-scroll" id="assetScroll"></div>
+
+    <!-- Chart Card -->
+    <div class="chart-card">
+        <div class="chart-card-header">
+            <div>
+                <div class="chart-symbol" id="chartSymbol">EUR/USD</div>
+                <div class="chart-tf">● Таймфрейм: 1 минута</div>
+            </div>
+            <div class="chart-price-block">
+                <div class="chart-price" id="chartPrice">1.0892</div>
+                <div class="chart-change up" id="chartChange">+0.12%</div>
+            </div>
+        </div>
+        <div class="chart-wrap">
+            <canvas id="mainChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Signal Button -->
+    <button class="signal-btn" id="signalBtn">
+        <span class="signal-btn-icon">🎯</span>
+        <span>ПОЛУЧИТЬ СИГНАЛ</span>
+        <span class="signal-btn-timer" id="signalTimer"></span>
+    </button>
+
+    <!-- Signal Result Card -->
+    <div class="signal-result hidden" id="signalResult">
+        <div class="signal-badge-row">
+            <div class="signal-badge" id="signalBadge">LONG</div>
+            <div class="signal-confidence" id="signalConf">85% уверенность</div>
+        </div>
+        <div class="signal-asset" id="signalAssetName">EUR/USD</div>
+        <div class="signal-levels">
+            <div class="level">
+                <span class="level-label">🎯 Вход</span>
+                <span class="level-val entry" id="signalEntry">1.0892</span>
+            </div>
+            <div class="level">
+                <span class="level-label">🛑 Стоп-лосс</span>
+                <span class="level-val sl" id="signalSL">1.0865</span>
+            </div>
+            <div class="level">
+                <span class="level-label">✅ Take Profit</span>
+                <span class="level-val tp" id="signalTP">1.0930</span>
+            </div>
+        </div>
+        <div class="signal-actions">
+            <button class="action-btn primary" id="copyBtn">📋 Копировать</button>
+            <button class="action-btn secondary" id="newSignalBtn">🔄 Новый сигнал</button>
+        </div>
+        <div class="signal-time" id="signalTime">Только что</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-val">1,247</span>
+            <span class="stat-lbl">Сигналов</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-val green">87.4%</span>
+            <span class="stat-lbl">Точность</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-val accent">+2,847$</span>
+            <span class="stat-lbl">Прибыль</span>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"><span id="toastMsg">✅ Готово</span></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
