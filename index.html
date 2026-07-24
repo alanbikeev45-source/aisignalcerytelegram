@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#050510">
+    <title>Gemini Signal AI</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.2.1/dist/chartjs-chart-financial.min.js"></script>
+</head>
+<body>
+
+<div class="neon-bg"></div>
+
+<div class="app">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-glow"></div>
+            <span class="logo-icon">⬡</span>
+        </div>
+        <div class="header-info">
+            <div class="title">GEMINI SIGNAL</div>
+            <div class="subtitle">AI BINARY TRADING</div>
+        </div>
+        <div class="win-badge neon-box">
+            <span class="win-num">87%</span>
+            <span class="win-text">WIN</span>
+        </div>
+    </header>
+
+    <!-- Market Selector -->
+    <div class="markets" id="markets">
+        <button class="market-btn active" data-market="forex">💱 Форекс</button>
+        <button class="market-btn" data-market="commodities">🛢 Сырьё</button>
+        <button class="market-btn" data-market="stocks">📊 Акции</button>
+    </div>
+
+    <!-- Assets -->
+    <div class="assets-row" id="assetsRow"></div>
+
+    <!-- Chart -->
+    <div class="chart-card neon-card">
+        <div class="chart-head">
+            <div>
+                <div class="chart-symbol" id="chartSymbol">EUR/USD</div>
+                <div class="chart-exp">● экспирация 1 мин</div>
+            </div>
+            <div class="chart-price-block">
+                <div class="chart-price" id="chartPrice">1.0892</div>
+                <div class="chart-change up" id="chartChange">+0.12%</div>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="candleChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Get Signal -->
+    <button class="signal-btn neon-glow" id="signalBtn">
+        <span class="btn-flash"></span>
+        <span class="btn-content">⚡ ПОЛУЧИТЬ СИГНАЛ</span>
+    </button>
+
+    <!-- Signal Result -->
+    <div class="signal-card neon-card hidden" id="signalCard">
+        <div class="signal-type-row">
+            <div class="signal-type" id="signalType">CALL ▲</div>
+            <div class="signal-conf" id="signalConf">85%</div>
+        </div>
+        <div class="signal-asset" id="signalAsset">EUR/USD</div>
+        <div class="signal-info-grid">
+            <div class="signal-info">
+                <span class="si-label">Экспирация</span>
+                <span class="si-value">1 минута</span>
+            </div>
+            <div class="signal-info">
+                <span class="si-label">Вход</span>
+                <span class="si-value" id="signalEntry">1.0892</span>
+            </div>
+            <div class="signal-info">
+                <span class="si-label">Таймфрейм</span>
+                <span class="si-value">M1</span>
+            </div>
+        </div>
+        <div class="signal-btns">
+            <button class="s-btn copy" id="copyBtn">📋 Копировать</button>
+            <button class="s-btn again" id="againBtn">🔄 Новый</button>
+        </div>
+        <div class="signal-time" id="signalTime">Только что</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+        <div class="stat-card neon-card">
+            <span class="stat-val">1,247</span>
+            <span class="stat-lbl">Сигналов</span>
+        </div>
+        <div class="stat-card neon-card">
+            <span class="stat-val green">87.4%</span>
+            <span class="stat-lbl">Точность</span>
+        </div>
+        <div class="stat-card neon-card">
+            <span class="stat-val purple">+2,847$</span>
+            <span class="stat-lbl">Прибыль</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="toast" id="toast"><span id="toastMsg">✅ Сигнал готов</span></div>
+
+<script src="app.js"></script>
+</body>
+</html>
